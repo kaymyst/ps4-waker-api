@@ -1,0 +1,15 @@
+{
+  "name": "ps4-wake-api",
+  "version": "1.0.0",
+  "description": "wakes PS4 from GET call",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kaymyst",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
