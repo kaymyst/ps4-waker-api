@@ -10,7 +10,8 @@
   "author": "kaymyst",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "ps4-waker": "^1.7.0"
   },
   "repository": {
   "type": "git",
