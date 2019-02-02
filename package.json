@@ -11,10 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
+    "node-wol": "^0.1.1",
     "ps4-waker": "^1.7.0"
   },
   "repository": {
-  "type": "git",
-  "url": "git://github.com/kaymyst/ps4-wake-api.git"
+    "type": "git",
+    "url": "git://github.com/kaymyst/ps4-wake-api.git"
   }
 }
