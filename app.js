@@ -5,7 +5,7 @@ const {Device} = require('ps4-waker');
 const wol = require('wol');
 
 app.get('/ps4', (req, res) => {
-
+console.log('ps4-waker');
 var ps4 = new Device();
 var promise = ps4.turnOn();
 promise.then(() => {
@@ -20,6 +20,7 @@ promise.then(() => {
 });
 
 app.get('/pc', (req, res) => {
+  console.log('pc-waker');
   wol.wake('BC:5F:F4:CE:D8:CD', function(err, res){
   console.log(res);
 });
