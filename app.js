@@ -23,11 +23,6 @@ app.get('/pc', (req, res) => {
   wol.wake('BC:5F:F4:CE:D8:CD', {
   address: '192.168.0.255',
   port: 9
-}, function(error) {
-  if(error) {
-    // handle error
-    return;
-  }
 });
 });
 
