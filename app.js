@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3000
 const {Device} = require('ps4-waker');
-const var wol = require('node-wol');
+const wol = require('node-wol');
 
 app.get('/ps4', (req, res) => {
 
