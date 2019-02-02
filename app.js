@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3000
 const {Device} = require('ps4-waker');
-const wol = require('node-wol');
+const wol = require('wol');
 
 app.get('/ps4', (req, res) => {
 
@@ -20,15 +20,8 @@ promise.then(() => {
 });
 
 app.get('/pc', (req, res) => {
-  wol.wake('BC:5F:F4:CE:D8:CD', {
-  address: '192.168.0.255',
-  port: 9
-}, function(error) {
-  if(error) {
-    // handle error
-    console.console.log(error);
-    return;
-  }
+  wol.wake('BC:5F:F4:CE:D8:CD', function(err, res){
+  console.log(res);
 });
 });
 
