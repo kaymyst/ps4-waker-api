@@ -56,7 +56,7 @@ app.get('/pc', (req, res) => {
 
 app.get('/playNova', (req, res) => {
   //
-  exec('echo -e \"connect 54:60:09:6F:13:4B\nquit\n\" | bluetoothctl && sleep 2 && mpc play', (err, stdout, stderr) => {
+  exec("echo \"connect 54:60:09:6F:13:4B\nquit\n\" | bluetoothctl && sleep 2 && mpc play", (err, stdout, stderr) => {
   if (err) {
     //some err occurred
     console.error(err)
@@ -67,6 +67,24 @@ app.get('/playNova', (req, res) => {
    console.log(`stderr: ${stderr}`);
    res.send("Playing nova");
    console.log("Playing nova");
+  }
+  });
+
+});
+
+app.get('/stopNova', (req, res) => {
+  //
+  exec("mpc stop && echo \"disconnect 54:60:09:6F:13:4B\nquit\n\" | bluetoothctl", (err, stdout, stderr) => {
+  if (err) {
+    //some err occurred
+    console.error(err)
+    res.send(error);
+  } else {
+   // the *entire* stdout and stderr (buffered)
+   console.log(`stdout: ${stdout}`);
+   console.log(`stderr: ${stderr}`);
+   res.send("Stopped nova");
+   console.log("Stopped nova");
   }
   });
 
