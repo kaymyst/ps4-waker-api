@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 WorkingDirectory=/home/pi/ps4-waker-service
-ExecStart=/usr/bin/npm start
+ExecStart=/usr/bin/pulseaudio --start && /usr/bin/npm start
 Restart=on-failure
 User=pi
 Environment=PORT=3000
