@@ -3,8 +3,8 @@ Description=PS4-Waker-API Service
 After=network.target
 
 [Service]
-WorkingDirectory=/home/pi/ps4-waker-service
-ExecStart=/usr/bin/pulseaudio --start && /usr/bin/npm start
+WorkingDirectory=/home/pi/ps4-waker-api
+ExecStart=/usr/bin/node app.js
 Restart=on-failure
 User=pi
 Environment=PORT=3000
