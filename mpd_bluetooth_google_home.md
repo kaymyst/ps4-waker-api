@@ -6,7 +6,15 @@ sudo usermod -G bluetooth -a pi
 
 pulseaudio --start
 
+bluetoothctl
+
+scan on
+pair 54:60:09:6F:13:4B
+scan off
+
 bluetoothctl -- connect 54:60:09:6F:13:4B
+
+speaker-test -c 2
 
 edit /etc/pulse/default.pa , add
 load-module module-switch-on-connect
@@ -43,4 +51,5 @@ echo -e "connect 54:60:09:6F:13:4B\nquit\n" | bluetoothctl
 echo -e "disconnect 54:60:09:6F:13:4B\nquit\n" | bluetoothctl
 
  mpc add http://radionova.ice.infomaniak.ch/radionova-high.mp3
+ pmc add https://stream.radiofrance.fr/fip/fip.m3u8?id=radiofrance
  mpc play

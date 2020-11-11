@@ -56,7 +56,7 @@ app.get('/pc', (req, res) => {
 
 app.get('/playNova', (req, res) => {
   //
-  exec("pulseaudio --start; bluetoothctl -- connect 54:60:09:6F:13:4B && mpc play", (err, stdout, stderr) => {
+  exec("pulseaudio --start; bluetoothctl -- connect 54:60:09:6F:13:4B && mpc play 1", (err, stdout, stderr) => {
   if (err) {
     //some err occurred
     console.error(err)
@@ -72,7 +72,25 @@ app.get('/playNova', (req, res) => {
 
 });
 
-app.get('/stopNova', (req, res) => {
+app.get('/playFIP', (req, res) => {
+  //
+  exec("pulseaudio --start; bluetoothctl -- connect 54:60:09:6F:13:4B && mpc play 2", (err, stdout, stderr) => {
+  if (err) {
+    //some err occurred
+    console.error(err)
+    res.send(err);
+  } else {
+   // the *entire* stdout and stderr (buffered)
+   console.log(`stdout: ${stdout}`);
+   console.log(`stderr: ${stderr}`);
+   res.send("Playing FIP");
+   console.log("Playing FIP");
+  }
+  });
+
+});
+
+app.get('/stopRadio', (req, res) => {
   //
   exec("mpc stop && bluetoothctl -- disconnect 54:60:09:6F:13:4B", (err, stdout, stderr) => {
   if (err) {
