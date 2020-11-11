@@ -56,11 +56,11 @@ app.get('/pc', (req, res) => {
 
 app.get('/playNova', (req, res) => {
   //
-  exec("pulseaudio --start && bluetoothctl -- connect 54:60:09:6F:13:4B && mpc play", (err, stdout, stderr) => {
+  exec("pulseaudio --start; bluetoothctl -- connect 54:60:09:6F:13:4B && mpc play", (err, stdout, stderr) => {
   if (err) {
     //some err occurred
     console.error(err)
-    res.send(error);
+    res.send(err);
   } else {
    // the *entire* stdout and stderr (buffered)
    console.log(`stdout: ${stdout}`);
@@ -78,7 +78,7 @@ app.get('/stopNova', (req, res) => {
   if (err) {
     //some err occurred
     console.error(err)
-    res.send(error);
+    res.send(err);
   } else {
    // the *entire* stdout and stderr (buffered)
    console.log(`stdout: ${stdout}`);
