@@ -56,7 +56,7 @@ app.get('/pc', (req, res) => {
 
 app.get('/playNova', (req, res) => {
   //
-  exec("pulseaudio --start && echo \"connect 54:60:09:6F:13:4B\nquit\n\" | bluetoothctl && sleep 2 && mpc play", (err, stdout, stderr) => {
+  exec("pulseaudio --start && bluetoothctl -- connect 54:60:09:6F:13:4B && mpc play", (err, stdout, stderr) => {
   if (err) {
     //some err occurred
     console.error(err)
@@ -74,7 +74,7 @@ app.get('/playNova', (req, res) => {
 
 app.get('/stopNova', (req, res) => {
   //
-  exec("mpc stop && echo \"disconnect 54:60:09:6F:13:4B\nquit\n\" | bluetoothctl", (err, stdout, stderr) => {
+  exec("mpc stop && bluetoothctl -- disconnect 54:60:09:6F:13:4B", (err, stdout, stderr) => {
   if (err) {
     //some err occurred
     console.error(err)
