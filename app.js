@@ -34,6 +34,25 @@ if (checkIP(req, res)) {
 }
 });
 
+app.get('/ps4off', (req, res) => {
+  if (checkIP(req, res)) {
+    var ps4 = new Device({
+            bindAddress: "192.168.0.12"
+        }
+    );
+    var promise = ps4.turnOff();
+    promise.then(() => {
+      console.log('ps4-waker');
+      res.send('PS4 woken up!');
+      ps4.close()
+    }).catch((e) => {
+      res.send(`ps4-waker: ${e}`);
+      console.log(`ps4-waker: ${e}`)
+      ps4.close()
+    });
+  }
+  });
+
 app.get('/pc', (req, res) => {
   if (checkIP(req, res)) {
     wol.wake('40:8D:5C:84:3A:58', {
@@ -53,7 +72,7 @@ app.get('/pc', (req, res) => {
   });
 }
 });
-
+/*
 app.get('/playNova', (req, res) => {
   //
   exec("pulseaudio --start; bluetoothctl -- connect 54:60:09:6F:13:4B && mpc play 1", (err, stdout, stderr) => {
@@ -107,5 +126,5 @@ app.get('/stopRadio', (req, res) => {
   });
 
 });
-
+*/
 app.listen(port, () => console.log(`ps4-waker-api app listening on port ${port}!`))
