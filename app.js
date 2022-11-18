@@ -18,7 +18,7 @@ function checkIP(req, res) {
 app.get('/ps4', (req, res) => {
 if (checkIP(req, res)) {
   var ps4 = new Device({
-          bindAddress: "192.168.0.110"
+          bindAddress: "192.168.0.12"
       }
   );
   var promise = ps4.turnOn();
@@ -36,7 +36,7 @@ if (checkIP(req, res)) {
 
 app.get('/pc', (req, res) => {
   if (checkIP(req, res)) {
-    wol.wake('BC:5F:F4:CE:D8:CD', {
+    wol.wake('40:8D:5C:84:3A:58', {
     address: '192.168.0.255',
     port: 9
   }, function(error) {
