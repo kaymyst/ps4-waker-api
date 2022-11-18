@@ -43,7 +43,7 @@ app.get('/ps4off', (req, res) => {
     var promise = ps4.turnOff();
     promise.then(() => {
       console.log('ps4-waker');
-      res.send('PS4 woken up!');
+      res.send('PS4 turned off!');
       ps4.close()
     }).catch((e) => {
       res.send(`ps4-waker: ${e}`);
